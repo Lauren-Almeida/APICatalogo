@@ -1,7 +1,10 @@
 using APICatalogo.Context;
+using APICatalogo.DTO.Mappings;
 using APICatalogo.Extensions;
 using APICatalogo.Filters;
 using APICatalogo.Logging;
+using APICatalogo.Repository;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 
@@ -22,12 +25,21 @@ builder.Services.AddDbContext<AppDbContext>(options =>
                     options.UseMySql(mySqlConnection,
                     ServerVersion.AutoDetect(mySqlConnection)));
 
-builder.Services.AddScoped<ApiLoggingFilter>();
+//builder.Services.AddScoped<ApiLoggingFilter>();
 
-builder.Logging.AddProvider(new CustomLoggerProvider(new CustomLoggerProviderConfiguration
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+var mappingConfig = new MapperConfiguration(mc =>
 {
-    LogLevel = LogLevel.Information
-}));
+    mc.AddProfile(new MappingProfile());
+});
+
+IMapper mapper = mappingConfig.CreateMapper();
+builder.Services.AddSingleton(mapper);
+
+// builder.Logging.AddProvider(new CustomLoggerProvider(new CustomLoggerProviderConfiguration
+// {
+//     LogLevel = LogLevel.Information
+// }));
 
 var app = builder.Build();
 
@@ -39,7 +51,7 @@ if (app.Environment.IsDevelopment())
 }
 
 //adiciona o middleware de tratamento de erros
-app.ConfigureExceptionHandler();
+//app.ConfigureExceptionHandler();
 
 app.UseHttpsRedirection();
 app.UseAuthorization();

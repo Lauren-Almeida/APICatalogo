@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "n9H1PECbr2l/IK36tyROVZEguyMnc8bA330jBsh9YLHBqkYsMbwVLoQKSGiUJSFeT3VKuajhvVJQKdSKnP/w6A==",
+  "dgSpecHash": "IAknG1w70G3JjHEgURZvSgp9fRx7EcN1oE8r4MPsH+K+PsAfXlINBwKVWESd4V0yyoeGU9mX8XQKhZIOb8R5Gw==",
   "success": true,
-  "projectFilePath": "d:\\ProjetosCurso\\clonados\\APICatalogo\\APICatalogo\\APICatalogo.csproj",
+  "projectFilePath": "D:\\ProjetosCurso\\clonados\\APICatalogo\\APICatalogo\\APICatalogo.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\lauren.goncalves\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\lauren.goncalves\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\lauren.goncalves\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\lauren.goncalves\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\lauren.goncalves\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",

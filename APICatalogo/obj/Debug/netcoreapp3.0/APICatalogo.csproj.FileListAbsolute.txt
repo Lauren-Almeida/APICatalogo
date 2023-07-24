@@ -1,0 +1,6 @@
+D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\obj\Debug\netcoreapp3.0\APICatalogo.csproj.AssemblyReference.cache
+D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\obj\Debug\netcoreapp3.0\APICatalogo.GeneratedMSBuildEditorConfig.editorconfig
+D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\obj\Debug\netcoreapp3.0\APICatalogo.AssemblyInfoInputs.cache
+D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\obj\Debug\netcoreapp3.0\APICatalogo.AssemblyInfo.cs
+D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\obj\Debug\netcoreapp3.0\APICatalogo.csproj.CoreCompileInputs.cache
+D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\obj\Debug\netcoreapp3.0\APICatalogo.MvcApplicationPartsAssemblyInfo.cache

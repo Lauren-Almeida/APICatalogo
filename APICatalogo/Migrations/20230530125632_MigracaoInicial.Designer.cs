@@ -77,16 +77,9 @@ namespace APICatalogo.Migrations
                     b.HasOne("APICatalogo.Models.Categoria", "Categoria")
                         .WithMany("Produtos")
                         .HasForeignKey("CategoriaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Categoria");
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("APICatalogo.Models.Categoria", b =>
-                {
-                    b.Navigation("Produtos");
-                });
 #pragma warning restore 612, 618
         }
     }

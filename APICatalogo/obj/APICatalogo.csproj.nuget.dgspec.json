@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ProjetosCurso\\APICatalogo\\APICatalogo\\APICatalogo.csproj": {}
+    "d:\\ProjetosCurso\\clonados\\APICatalogo\\APICatalogo\\APICatalogo.csproj": {}
   },
   "projects": {
-    "D:\\ProjetosCurso\\APICatalogo\\APICatalogo\\APICatalogo.csproj": {
+    "d:\\ProjetosCurso\\clonados\\APICatalogo\\APICatalogo\\APICatalogo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ProjetosCurso\\APICatalogo\\APICatalogo\\APICatalogo.csproj",
+        "projectUniqueName": "d:\\ProjetosCurso\\clonados\\APICatalogo\\APICatalogo\\APICatalogo.csproj",
         "projectName": "APICatalogo",
-        "projectPath": "D:\\ProjetosCurso\\APICatalogo\\APICatalogo\\APICatalogo.csproj",
+        "projectPath": "d:\\ProjetosCurso\\clonados\\APICatalogo\\APICatalogo\\APICatalogo.csproj",
         "packagesPath": "C:\\Users\\lauren.goncalves\\.nuget\\packages\\",
-        "outputPath": "D:\\ProjetosCurso\\APICatalogo\\APICatalogo\\obj\\",
+        "outputPath": "d:\\ProjetosCurso\\clonados\\APICatalogo\\APICatalogo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lauren.goncalves\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -38,11 +38,29 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[6.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.13, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.3, )"
+              "version": "[6.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.13, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.13, )"
             },
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
@@ -50,7 +68,7 @@
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.2.3, )"
+              "version": "[6.3.0, )"
             }
           },
           "imports": [

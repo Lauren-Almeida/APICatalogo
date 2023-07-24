@@ -1,22 +1,33 @@
-using System.Text.Json.Serialization;
 using APICatalogo.Context;
+using APICatalogo.Extensions;
+using APICatalogo.Filters;
+using APICatalogo.Logging;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add services to the container.
 builder.Services.AddControllers()
-    .AddJsonOptions(options =>
-        options.JsonSerializerOptions
-          .ReferenceHandler = ReferenceHandler.IgnoreCycles);// Add services to the container.
-builder.Services.AddEndpointsApiExplorer();// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+      .AddJsonOptions(options =>
+         options.JsonSerializerOptions
+            .ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
+builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-string mysqlConnection = builder.Configuration.GetConnectionString("DefaultConnection");
-
+string mySqlConnection = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-         options.UseMySql(mysqlConnection,
-            ServerVersion.AutoDetect(mysqlConnection)));
+                    options.UseMySql(mySqlConnection,
+                    ServerVersion.AutoDetect(mySqlConnection)));
+
+builder.Services.AddScoped<ApiLoggingFilter>();
+
+builder.Logging.AddProvider(new CustomLoggerProvider(new CustomLoggerProviderConfiguration
+{
+    LogLevel = LogLevel.Information
+}));
 
 var app = builder.Build();
 
@@ -27,10 +38,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+//adiciona o middleware de tratamento de erros
+app.ConfigureExceptionHandler();
+
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();

@@ -25,7 +25,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
                     options.UseMySql(mySqlConnection,
                     ServerVersion.AutoDetect(mySqlConnection)));
 
-//builder.Services.AddScoped<ApiLoggingFilter>();
+builder.Services.AddScoped<ApiLoggingFilter>();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 var mappingConfig = new MapperConfiguration(mc =>

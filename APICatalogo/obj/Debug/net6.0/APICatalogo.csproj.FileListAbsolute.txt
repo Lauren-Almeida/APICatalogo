@@ -55,6 +55,10 @@ D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\bin\Debug\net6.0\AutoMapper.Ex
 D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\bin\Debug\net6.0\Humanizer.dll
 D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\bin\Debug\net6.0\MessagePack.dll
 D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\bin\Debug\net6.0\MessagePack.Annotations.dll
+D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
 D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\bin\Debug\net6.0\Microsoft.AspNetCore.Razor.Language.dll
@@ -83,6 +87,14 @@ D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\bin\Debug\net6.0\Microsoft.Ent
 D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
 D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
 D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
+D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
 D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\bin\Debug\net6.0\Microsoft.NET.StringTools.dll
 D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\bin\Debug\net6.0\Microsoft.OpenApi.dll
 D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\bin\Debug\net6.0\Microsoft.VisualStudio.Debugger.Contracts.dll
@@ -117,6 +129,7 @@ D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\bin\Debug\net6.0\System.Compos
 D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\bin\Debug\net6.0\System.Composition.TypedParts.dll
 D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
 D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\bin\Debug\net6.0\System.Drawing.Common.dll
+D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
 D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\bin\Debug\net6.0\System.Reflection.MetadataLoadContext.dll
 D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
 D:\ProjetosCurso\clonados\APICatalogo\APICatalogo\bin\Debug\net6.0\System.Security.Permissions.dll

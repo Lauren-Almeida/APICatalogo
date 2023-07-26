@@ -13,6 +13,7 @@
             "args": [],
             "cwd": "${workspaceFolder}/APICatalogo",
             "stopAtEntry": false,
+            "justMyCode": false,
             "serverReadyAction": {
                 "action": "openExternally",
                 "pattern": "\\bNow listening on:\\s+(https?://\\S+)"

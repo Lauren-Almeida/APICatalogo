@@ -12,11 +12,10 @@ using Newtonsoft.Json;
 
 namespace APICatalogo.Controllers
 {
-
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("[controller]")]
     [ApiController]
-    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-
+    [EnableCors]
     public class CategoriasController : ControllerBase
     {
         private readonly IUnitOfWork _uof;
@@ -38,7 +37,6 @@ namespace APICatalogo.Controllers
         }
 
         [HttpGet]
-        [EnableCors("PermitirApiRequest")]
         public async Task<ActionResult<IEnumerable<CategoriaDTO>>> Get([FromQuery] CategoriasParameters categoriasParameters)
         {
             var categorias = await _uof.CategoriaRepository

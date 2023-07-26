@@ -75,8 +75,6 @@ builder.Services.AddAuthentication(
                          Encoding.UTF8.GetBytes(builder.Configuration["Jwt:key"]))
                  });
 
-
-
 builder.Services.AddScoped<ApiLoggingFilter>();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -87,21 +85,12 @@ var mappingConfig = new MapperConfiguration(mc =>
 
 IMapper mapper = mappingConfig.CreateMapper();
 builder.Services.AddSingleton(mapper);
-
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("PermitirApiRequest",
-        builder =>
-        builder.WithOrigins("https://apirequest.io/")
-      .WithMethods("GET")
-    );
-});
-builder.Services.AddCors();
-
 // builder.Logging.AddProvider(new CustomLoggerProvider(new CustomLoggerProviderConfiguration
 // {
 //     LogLevel = LogLevel.Information
 // }));
+
+builder.Services.AddCors();
 
 var app = builder.Build();
 
@@ -115,15 +104,11 @@ if (app.Environment.IsDevelopment())
 //adiciona o middleware de tratamento de erros
 //app.ConfigureExceptionHandler();
 
+
 app.UseHttpsRedirection();
+app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
-
-app.UseCors(opt => opt.
-                 WithOrigins("https://apirequest.io/")
-                .WithMethods("GET"));
-
 app.UseCors(opt => opt.AllowAnyOrigin());
-
 app.MapControllers();
 app.Run();

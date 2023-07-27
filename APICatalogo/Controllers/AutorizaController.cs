@@ -8,6 +8,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace APICatalogo.Controllers
 {
+    [Produces("application/json")]
     [Route("[controller]")]
     [ApiController]
     public class AutorizaController : ControllerBase
@@ -32,6 +33,15 @@ namespace APICatalogo.Controllers
                 + DateTime.Now.ToLongDateString();
         }
 
+        /// <summary>
+        /// Inclui um novo usuario
+        /// </summary>
+        ///<remarks>
+        ///POST produtos
+        ///</remarks>
+        /// <param name="usuarioDTO">cdusuario</param>
+        /// <returns>Objetos Usuario</returns>
+        ///<remarks>Retorna o usuário registrado</remarks>
         [HttpPost("register")]
         public async Task<ActionResult> RegisterUser([FromBody] UsuarioDTO model)
         {
@@ -58,6 +68,15 @@ namespace APICatalogo.Controllers
             return Ok(GeraToken(model));
         }
 
+        /// <summary>
+        /// Verifica as credenciais de um usuário
+        /// </summary>
+        ///<remarks>
+        ///POSTusuarios
+        ///</remarks>
+        /// <param name="userInfo">cdusuario</param>
+        /// <returns>Status 200 e o token gerado</returns>
+        ///<remarks>Retorna 200 e o token gerado</remarks>
         [HttpPost("login")]
         public async Task<ActionResult> Login([FromBody] UsuarioDTO userInfo)
         {

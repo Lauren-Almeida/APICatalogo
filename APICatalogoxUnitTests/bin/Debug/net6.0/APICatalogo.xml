@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>APICatalogo</name>
+    </assembly>
+    <members>
+        <member name="M:APICatalogo.Controllers.AutorizaController.RegisterUser(APICatalogo.DTO.UsuarioDTO)">
+             <summary>
+             Inclui um novo usuario
+             </summary>
+            <remarks>
+            POST produtos
+            </remarks>
+             <param name="usuarioDTO">cdusuario</param>
+             <returns>Objetos Usuario</returns>
+            <remarks>Retorna o usuário registrado</remarks>
+        </member>
+        <member name="M:APICatalogo.Controllers.AutorizaController.Login(APICatalogo.DTO.UsuarioDTO)">
+             <summary>
+             Verifica as credenciais de um usuário
+             </summary>
+            <remarks>
+            POSTusuarios
+            </remarks>
+             <param name="userInfo">cdusuario</param>
+             <returns>Status 200 e o token gerado</returns>
+            <remarks>Retorna 200 e o token gerado</remarks>
+        </member>
+        <member name="M:APICatalogo.Controllers.CategoriasController.Get(System.Int32)">
+            <summary>
+            Obtem uma categoria pelo ID
+            </summary>
+            <param name="cdcategoria">cd categoria</param>
+            <returns>Objetos Categoria</returns>
+        </member>
+        <member name="M:APICatalogo.Controllers.CategoriasController.Post(APICatalogo.DTO.CategoriaDTO)">
+             <summary>
+             Inclui uma nova categoria
+             </summary>
+            <remarks>
+            POST produtos
+            </remarks>
+             <param name="categoriaDTO">cd categoria</param>
+             <returns>Objetos Categoria</returns>
+            <remarks>Retorna a categoria inserida</remarks>
+        </member>
+        <member name="M:APICatalogo.Controllers.ProdutosController.Get(System.Int32)">
+            <summary>
+            Obtem um produto pelo ID
+            </summary>
+            <param name="cdproduto">cd produto</param>
+            <returns>Objetos produtos</returns>
+        </member>
+        <member name="M:APICatalogo.Controllers.ProdutosController.Post(APICatalogo.DTO.ProdutoDTO)">
+             <summary>
+             Inclui um novo produto
+             </summary>
+            <remarks>
+            POST produtos
+            </remarks>
+             <param name="produtosDTO">cdprodutos</param>
+             <returns>Objetos produtos</returns>
+            <remarks>Retorna o produto inserido</remarks>
+        </member>
+    </members>
+</doc>

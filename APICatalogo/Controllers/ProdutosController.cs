@@ -3,17 +3,16 @@ using APICatalogo.Models;
 using APICatalogo.Pagination;
 using APICatalogo.Repository;
 using AutoMapper;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
 namespace APICatalogo.Controllers
 {
-    [Route("[controller]")]
+    [ApiConventionType(typeof(DefaultApiConventions))]
+    [Produces("application/json")]
+    [Route("api/[Controller]")]
     [ApiController]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    // [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class ProdutosController : ControllerBase
     {
         private readonly IUnitOfWork _uof;
@@ -55,6 +54,11 @@ namespace APICatalogo.Controllers
             return produtosDto;
         }
 
+        /// <summary>
+        /// Obtem um produto pelo ID
+        /// </summary>
+        /// <param name="cdproduto">cd produto</param>
+        /// <returns>Objetos produtos</returns>
         [HttpGet("{id:int}", Name = "ObterProduto")]
         public async Task<ActionResult<ProdutoDTO>> Get(int id)
         {
@@ -67,7 +71,15 @@ namespace APICatalogo.Controllers
             var produtoDto = _mapper.Map<ProdutoDTO>(produto);
             return produtoDto;
         }
-
+        /// <summary>
+        /// Inclui um novo produto
+        /// </summary>
+        ///<remarks>
+        ///POST produtos
+        ///</remarks>
+        /// <param name="produtosDTO">cdprodutos</param>
+        /// <returns>Objetos produtos</returns>
+        ///<remarks>Retorna o produto inserido</remarks>
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] ProdutoDTO produtoDto)
         {

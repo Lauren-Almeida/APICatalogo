@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ProjetosCurso\\clonados\\APICatalogo\\APICatalogo\\APICatalogo.csproj": {}
+    "d:\\ProjetosCurso\\clonados\\APICatalogo\\APICatalogo\\APICatalogo.csproj": {}
   },
   "projects": {
-    "D:\\ProjetosCurso\\clonados\\APICatalogo\\APICatalogo\\APICatalogo.csproj": {
+    "d:\\ProjetosCurso\\clonados\\APICatalogo\\APICatalogo\\APICatalogo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ProjetosCurso\\clonados\\APICatalogo\\APICatalogo\\APICatalogo.csproj",
+        "projectUniqueName": "d:\\ProjetosCurso\\clonados\\APICatalogo\\APICatalogo\\APICatalogo.csproj",
         "projectName": "APICatalogo",
-        "projectPath": "D:\\ProjetosCurso\\clonados\\APICatalogo\\APICatalogo\\APICatalogo.csproj",
+        "projectPath": "d:\\ProjetosCurso\\clonados\\APICatalogo\\APICatalogo\\APICatalogo.csproj",
         "packagesPath": "C:\\Users\\lauren.goncalves\\.nuget\\packages\\",
-        "outputPath": "D:\\ProjetosCurso\\clonados\\APICatalogo\\APICatalogo\\obj\\",
+        "outputPath": "d:\\ProjetosCurso\\clonados\\APICatalogo\\APICatalogo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lauren.goncalves\\AppData\\Roaming\\NuGet\\NuGet.Config"

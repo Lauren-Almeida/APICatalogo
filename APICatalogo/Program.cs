@@ -16,20 +16,59 @@ using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllers()
-      .AddJsonOptions(options =>
-         options.JsonSerializerOptions
-            .ReferenceHandler = ReferenceHandler.IgnoreCycles);
+builder.Services.AddCors(options =>
+           {
+               options.AddPolicy("EnableCORS", builder =>
+               {
+                   builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().Build();
+               });
+           });
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+string mySqlConnection = builder.Configuration.GetConnectionString("DefaultConnection");
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+                    options.UseMySql(mySqlConnection,
+                    ServerVersion.AutoDetect(mySqlConnection)));
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+      .AddEntityFrameworkStores<AppDbContext>()
+      .AddDefaultTokenProviders();
+
+builder.Services.AddAuthentication(
+        JwtBearerDefaults.AuthenticationScheme).
+        AddJwtBearer(options =>
+         options.TokenValidationParameters = new TokenValidationParameters
+         {
+             ValidateIssuer = true,
+             ValidateAudience = true,
+             ValidateLifetime = true,
+             ValidAudience = builder.Configuration["TokenConfiguration:Audience"],
+             ValidIssuer = builder.Configuration["TokenConfiguration:Issuer"],
+             ValidateIssuerSigningKey = true,
+             IssuerSigningKey = new SymmetricSecurityKey(
+                 Encoding.UTF8.GetBytes(builder.Configuration["Jwt:key"]))
+         });
+
+
+builder.Services.AddApiVersioning(options =>
+{
+    options.AssumeDefaultVersionWhenUnspecified = true;
+    options.DefaultApiVersion = new ApiVersion(1, 0);
+    options.ReportApiVersions = true;
+});
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
     {
-        Title = "APICatalogo",
         Version = "v1",
-        Description = "Catálogo de Produtos e Categorias",
+        Title = "APICatalogo",
+        Description = "Cat�logo de Produtos e Categorias",
         TermsOfService = new Uri("https://localhost:5001/terms"),
         Contact = new OpenApiContact
         {
@@ -44,10 +83,6 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 
-    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-    c.IncludeXmlComments(xmlPath);
-
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
     {
         Name = "Authorization",
@@ -55,99 +90,81 @@ builder.Services.AddSwaggerGen(c =>
         Scheme = "Bearer",
         BearerFormat = "JWT",
         In = ParameterLocation.Header,
-        Description = "Header de autoriza��o JWT usando o esquema Bearer.\r\n\r\nInforme 'Bearer'[espa�o] e o seu token.\r\n\r\nExamplo: \'Bearer 12345abcdef\'",
+        Description = "Header do JWT Authorization usando o schema Bearer.Informe 'Bearer'[espa�o] e a seguir o seu token. Exemplo: \"Bearer 12345abcdef\"",
     });
-
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
-       {
-          new OpenApiSecurityScheme
-          {
-             Reference = new OpenApiReference
-             {
-                 Type = ReferenceType.SecurityScheme,
-                 Id = "Bearer"
-             }
-          },
-          new string[] {}
-       }
+                    {
+                          new OpenApiSecurityScheme
+                          {
+                              Reference = new OpenApiReference
+                              {
+                                  Type = ReferenceType.SecurityScheme,
+                                  Id = "Bearer"
+                              }
+                          },
+                         new string[] {}
+                    }
     });
+
+    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    c.IncludeXmlComments(xmlPath);
 });
 
-string mySqlConnection = builder.Configuration.GetConnectionString("DefaultConnection");
-
-builder.Services.AddDbContext<AppDbContext>(options =>
-                    options.UseMySql(mySqlConnection,
-                    ServerVersion.AutoDetect(mySqlConnection)));
-
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-    .AddEntityFrameworkStores<AppDbContext>()
-    .AddDefaultTokenProviders();
-
-builder.Services.AddAuthentication(
-                JwtBearerDefaults.AuthenticationScheme).
-                AddJwtBearer(options =>
-                 options.TokenValidationParameters = new TokenValidationParameters
-                 {
-                     ValidateIssuer = true,
-                     ValidateAudience = true,
-                     ValidateLifetime = true,
-                     ValidAudience = builder.Configuration["TokenConfiguration:Audience"],
-                     ValidIssuer = builder.Configuration["TokenConfiguration:Issuer"],
-                     ValidateIssuerSigningKey = true,
-                     IssuerSigningKey = new SymmetricSecurityKey(
-                         Encoding.UTF8.GetBytes(builder.Configuration["Jwt:key"]))
-                 });
-
-builder.Services.AddApiVersioning(options =>
-   {
-       options.AssumeDefaultVersionWhenUnspecified = true;
-       options.DefaultApiVersion = new ApiVersion(1, 0);
-       options.ReportApiVersions = true;
-       options.ApiVersionReader = new HeaderApiVersionReader("x-api-version");
-   });
-
-builder.Services.AddScoped<ApiLoggingFilter>();
-
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-var mappingConfig = new MapperConfiguration(mc =>
+builder.Services.AddControllers()
+.AddNewtonsoftJson(options =>
 {
-    mc.AddProfile(new MappingProfile());
+    options.SerializerSettings.ReferenceLoopHandling
+      = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
 });
 
-IMapper mapper = mappingConfig.CreateMapper();
-builder.Services.AddSingleton(mapper);
-// builder.Logging.AddProvider(new CustomLoggerProvider(new CustomLoggerProviderConfiguration
-// {
-//     LogLevel = LogLevel.Information
-// }));
-
-builder.Services.AddCors();
 
 var app = builder.Build();
 
 // // Configure the HTTP request pipeline.
-// if (app.Environment.IsDevelopment())
-// {
-//     app.UseSwagger();
-//     app.UseSwaggerUI();
-// }
-
-
-
-//adiciona o middleware de tratamento de erros
-//app.ConfigureExceptionHandler();
-app.UseSwagger();
-app.UseSwaggerUI(c =>
+if (app.Environment.IsDevelopment())
 {
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "APICatalogoV1");
-});
-
+    app.UseDeveloperExceptionPage();
+    //Swagger
+    app.UseSwagger();
+    //SwaggerUI
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "APICatalogo");
+    });
+}
+else
+{
+    app.UseSwagger();
+    //SwaggerUI
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "APICatalogo");
+        c.InjectStylesheet("/swagger/custom.css");
+        c.RoutePrefix = String.Empty;
+    });
+    app.UseHsts();
+}
 app.UseHttpsRedirection();
+
+//adiciona o middleware de roteamento 
 app.UseRouting();
+
+app.UseCors("EnableCORS");
+
+//adiciona o middleware de autenticacao
 app.UseAuthentication();
+
+//adiciona o middleware que habilita a autorizacao
 app.UseAuthorization();
-app.UseCors(opt => opt.AllowAnyOrigin());
-app.UseApiVersioning();
-app.MapControllers();
+
+//Adiciona o middleware que executa o endpoint 
+//do request atual
+app.UseEndpoints(endpoints =>
+{
+    // adiciona os endpoints para as Actions
+    // dos controladores sem especificar rotas
+    endpoints.MapControllers();
+});
 app.Run();

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ieV6+v1Jx2Bw5apSHNBjYUL18dB8bSTAOPAsCGgM/1XWrN2Piq4EBuDxN6hCIfJ5qsNwFMAsgmnxH5dTq7BrVQ==",
+  "dgSpecHash": "PMjfj6VDcLGDcxyslpE88a5HS6SHWD6EOf2SGTb/kwvdKf5DUAtlek0AswDDrdoz9Y0g0JbkrKOGHfZpz03a7A==",
   "success": true,
-  "projectFilePath": "D:\\ProjetosCurso\\clonados\\APICatalogo\\APICatalogo\\APICatalogo.csproj",
+  "projectFilePath": "d:\\ProjetosCurso\\clonados\\APICatalogo\\APICatalogo\\APICatalogo.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lauren.goncalves\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\lauren.goncalves\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

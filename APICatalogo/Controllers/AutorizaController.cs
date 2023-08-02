@@ -2,6 +2,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using APICatalogo.DTO;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -11,6 +12,7 @@ namespace APICatalogo.Controllers
     [Produces("application/json")]
     [Route("[controller]")]
     [ApiController]
+    [EnableCors]
     public class AutorizaController : ControllerBase
     {
         private readonly UserManager<IdentityUser> _userManager;
